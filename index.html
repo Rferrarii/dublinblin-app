@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nossa Viagem · Dublin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div id="intro" onclick="startApp()">
+  <div class="rays"></div>
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="cl c1"></div><div class="cl c2"></div><div class="cl c3"></div>
+  <div class="sun"></div>
+  <div class="fl"><span>☘</span><span>☘</span><span>☘</span><span>☘</span><span>☘</span><span>☘</span></div>
+  <div class="plane">✈️</div>
+  <div class="ic">
+    <div class="chip2">📚 NED COLLEGE · DUBLIN</div>
+    <div class="iflag"></div>
+    <h1 class="hello" id="hello">&nbsp;</h1>
+    <p class="isub">Sua aventura na Irlanda começa em</p>
+    <div class="idays"><b id="iDays">0</b><span>dias</span></div>
+    <div class="iclock"><div><b id="iH">00</b><small>horas</small></div><div><b id="iM">00</b><small>min</small></div><div><b id="iS">00</b><small>seg</small></div></div>
+    <div class="badges"><span>🎓</span><span>🏛️</span><span>🌉</span><span>🍀</span></div>
+    <p class="fail">Céad míle fáilte ☘️</p>
+    <button class="go" onclick="event.stopPropagation();startApp()">Começar ✈️</button>
+  </div>
+</div>
+<div class="app">
+<div class="bar-top"><b id="dest">☘️ Dublin, Irlanda</b><div><button class="ib" onclick="nextTheme()" aria-label="Trocar tema">🎨</button> <button class="ib" onclick="openSheet('shC')" aria-label="Ajustes">⚙️</button></div></div>
+<main data-dir="r">
+<div id="warn" class="card warn" style="display:none">Conectando… Se ficar assim, abra o app pelo link, logado no claude.ai, para sincronizar com sua amiga.</div>
+
+<section class="view on" id="v0">
+  <div class="hi" id="hi"></div>
+  <div class="card hero" onclick="confetti()">
+    <span class="chip">📚 NED COLLEGE · MAIO DE 2027</span>
+    <div class="n" id="days">–</div>
+    <div class="l" id="daysL">dias para embarcar</div>
+    <div class="clock"><div><b id="cH">00</b><small>horas</small></div><div><b id="cM">00</b><small>min</small></div><div><b id="cS">00</b><small>seg</small></div></div>
+    <svg class="sk" viewBox="0 0 400 150" preserveAspectRatio="xMidYMax slice"><circle cx="318" cy="44" r="22" fill="#fff3c4" opacity=".9"/><g class="s1" opacity=".55"><rect x="0" y="95" width="400" height="55"/><rect x="14" y="75" width="34" height="75"/><rect x="56" y="88" width="30" height="62"/><path d="M96 150V82h36v68zM96 82l18-28 18 28z"/><rect x="146" y="78" width="40" height="72"/><path d="M200 150L205 2 210 150z"/><rect x="226" y="86" width="36" height="64"/><path d="M276 150v-52a30 30 0 0 1 60 0v52z"/><rect x="346" y="80" width="26" height="70"/><rect x="376" y="92" width="24" height="58"/></g><g class="s2"><rect y="128" width="400" height="22"/><path d="M130 128a70 26 0 0 1 140 0h-10a60 22 0 0 0-120 0z"/></g><g class="s3" stroke-width="2"><path d="M152 128v-10M176 128v-14M200 128v-16M224 128v-14M248 128v-10"/></g></svg>
+  </div>
+  <div class="card">
+    <h2>Valores da viagem</h2>
+    <div class="stat">
+      <div class="ring"><svg viewBox="0 0 120 120"><defs><linearGradient id="rg"><stop offset="0" style="stop-color:var(--a2)"/><stop offset="1" style="stop-color:var(--a4)"/></linearGradient></defs><circle class="tr" cx="60" cy="60" r="52"/><circle class="pg" id="ringArc" cx="60" cy="60" r="52"/></svg><b id="ringTxt">0%</b></div>
+      <div style="flex:1"><div class="mut">Já pago</div><div class="big" id="hPaid">€ 0,00</div><div class="mut" style="margin-top:8px">Falta pagar</div><div class="big" id="hLeft">€ 0,00</div></div>
+    </div>
+    <div class="bar"><i id="hBar" data-w="0"></i></div>
+    <div class="mut" id="hPct">0% do total pago</div>
+  </div>
+  <div class="card"><div class="row"><h2 style="margin:0">💬 Frase do dia</h2><button class="g" onclick="nextTip()">🔀 outra</button></div><div class="tipEn" id="tipEn"></div><div class="mut" id="tipPt"></div></div>
+  <h2 style="margin:6px 2px 10px">Conheça Dublin</h2>
+  <div class="car">
+    <div class="lm"><svg viewBox="0 0 228 132"><rect width="228" height="132" fill="#bfe3f5"/><circle cx="40" cy="30" r="16" fill="#fff6cf"/><path d="M112 132L118 8 124 132z" fill="#4b5d6b"/><g fill="#7e8f9c"><rect x="10" y="88" width="50" height="44"/><rect x="66" y="98" width="36" height="34"/><rect x="138" y="92" width="44" height="40"/><rect x="188" y="80" width="40" height="52"/></g><rect y="120" width="228" height="12" fill="#5b6b76"/></svg><div><b>The Spire</b><span>Agulha de 120 m na O’Connell Street</span></div></div>
+    <div class="lm"><svg viewBox="0 0 228 132"><rect width="228" height="132" fill="#ffd9a8"/><circle cx="170" cy="36" r="18" fill="#fff3c4"/><rect y="92" width="228" height="40" fill="#2f7f9e"/><path d="M0 108q14-6 28 0t28 0 28 0 28 0 28 0 28 0 28 0 28 0" stroke="#7cc3dd" stroke-width="3" fill="none"/><path d="M20 94a94 52 0 0 1 188 0" stroke="#2b2b2b" stroke-width="7" fill="none"/><path d="M20 90h188" stroke="#2b2b2b" stroke-width="5"/><g stroke="#2b2b2b" stroke-width="3"><path d="M50 62v28M80 48v42M114 44v46M148 48v42M178 62v28"/></g><g fill="#fff3c4"><circle cx="20" cy="82" r="4"/><circle cx="208" cy="82" r="4"/></g></svg><div><b>Ha’penny Bridge</b><span>Ponte de 1816 sobre o rio Liffey</span></div></div>
+    <div class="lm"><svg viewBox="0 0 228 132"><rect width="228" height="132" fill="#c9e6d6"/><rect x="20" y="62" width="188" height="70" fill="#d8c9a3"/><path d="M20 62h188l-94-30z" fill="#bda97c"/><g fill="#8f7b55"><rect x="34" y="78" width="14" height="54"/><rect x="62" y="78" width="14" height="54"/><rect x="152" y="78" width="14" height="54"/><rect x="180" y="78" width="14" height="54"/></g><rect x="100" y="14" width="28" height="60" fill="#c9b78a"/><path d="M100 14h28l-14-12z" fill="#7a6a47"/><circle cx="114" cy="34" r="7" fill="#fff"/><rect x="104" y="96" width="20" height="36" fill="#6b5a3b"/></svg><div><b>Trinity College</b><span>Fundada em 1592, casa do Book of Kells</span></div></div>
+    <div class="lm"><svg viewBox="0 0 228 132"><rect width="228" height="132" fill="#2a3144"/><rect x="26" y="40" width="176" height="92" fill="#b3261e"/><rect x="26" y="34" width="176" height="14" fill="#7d1812"/><rect x="62" y="12" width="104" height="22" rx="4" fill="#f5b73b"/><rect x="40" y="62" width="42" height="42" fill="#ffd27a"/><rect x="146" y="62" width="42" height="42" fill="#ffd27a"/><rect x="98" y="66" width="32" height="66" fill="#1b2030"/><g fill="#169b62"><circle cx="40" cy="50" r="4"/><circle cx="70" cy="50" r="4"/><circle cx="158" cy="50" r="4"/><circle cx="188" cy="50" r="4"/></g></svg><div><b>Temple Bar</b><span>Pubs, música ao vivo e muito agito</span></div></div>
+    <div class="lm"><svg viewBox="0 0 228 132"><rect width="228" height="132" fill="#9a4e3b"/><g><rect x="12" y="38" width="44" height="94" fill="#e53f4f"/><path d="M12 38a22 18 0 0 1 44 0z" fill="#f7d9b0"/><rect x="62" y="38" width="44" height="94" fill="#2f6fd0"/><path d="M62 38a22 18 0 0 1 44 0z" fill="#f7d9b0"/><rect x="112" y="38" width="44" height="94" fill="#f5b73b"/><path d="M112 38a22 18 0 0 1 44 0z" fill="#f7d9b0"/><rect x="162" y="38" width="44" height="94" fill="#169b62"/><path d="M162 38a22 18 0 0 1 44 0z" fill="#f7d9b0"/></g><g fill="#fff3c4"><circle cx="46" cy="88" r="3"/><circle cx="96" cy="88" r="3"/><circle cx="146" cy="88" r="3"/><circle cx="196" cy="88" r="3"/></g></svg><div><b>Georgian Doors</b><span>Portas coloridas, cartão-postal da cidade</span></div></div>
+  </div>
+</section>
+
+<section class="view" id="v1">
+  <h1>💳 Pagamentos</h1><div class="sub">Tudo o que já foi pago, com comprovante</div>
+  <div class="card"><div id="payList"></div></div>
+</section>
+
+<section class="view" id="v2">
+  <h1>🎯 Metas</h1><div class="sub">Cada uma com a sua meta individual</div>
+  <div class="card">
+    <h2>Minha meta individual</h2>
+    <label>Quanto vou contribuir (€)</label><input id="goalIn" inputmode="decimal" placeholder="0,00">
+    <button class="w" onclick="saveGoal()">Salvar meta</button>
+    <div id="myGoal" style="margin-top:14px"></div>
+  </div>
+  <div id="others"></div>
+</section>
+
+<section class="view" id="v3">
+  <h1>🏨 Acomodações</h1><div class="sub">Sugiram opções e votem nas favoritas</div>
+  <div id="stayList"></div>
+</section>
+
+<section class="view" id="v4">
+  <h1>📸 Fotos</h1><div class="sub">Fotos de Dublin, da escola e da viagem</div>
+  <div id="photoList"></div>
+</section>
+</main>
+</div>
+
+<nav>
+  <button class="on" onclick="tab(0)"><span>🏠</span><em>Início</em></button>
+  <button onclick="tab(1)"><span>💳</span><em>Pagos</em></button>
+  <button onclick="tab(2)"><span>🎯</span><em>Metas</em></button>
+  <button onclick="tab(3)"><span>🏨</span><em>Hospedar</em></button>
+  <button onclick="tab(4)"><span>📸</span><em>Fotos</em></button>
+</nav>
+<button class="fab" id="fab" onclick="fabGo()" aria-label="Adicionar">＋</button>
+<div id="msg"></div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)closeSheet()">
+  <div class="sheet" id="shP"><div class="grab"></div><h2>Registrar pagamento</h2>
+    <label>Descrição</label><input id="pDesc" placeholder="Ex.: Passagem aérea, parcela 1/6">
+    <label>Valor (€)</label><input id="pVal" inputmode="decimal" placeholder="0,00">
+    <label>Data</label><input id="pDate" type="date">
+    <label>Comprovante (foto ou PDF)</label><input id="pFile" type="file" accept="image/*,application/pdf">
+    <button class="w" onclick="addPay()">Adicionar</button></div>
+  <div class="sheet" id="shS"><div class="grab"></div><h2>Sugerir acomodação</h2>
+    <label>Nome</label><input id="sName" placeholder="Ex.: Quarto perto do NED College">
+    <label>Link</label><input id="sLink" inputmode="url" placeholder="https://…">
+    <label>Preço total (€)</label><input id="sPrice" inputmode="decimal" placeholder="0,00">
+    <label>Observações</label><textarea id="sNotes" rows="2" placeholder="Distância da escola, cancelamento grátis…"></textarea>
+    <button class="w" onclick="addStay()">Adicionar</button></div>
+  <div class="sheet" id="shF"><div class="grab"></div><h2>Adicionar foto</h2>
+    <label>Foto</label><input id="fFile" type="file" accept="image/*">
+    <label>Legenda</label><input id="fCap" placeholder="Ex.: Passeio no Temple Bar">
+    <button class="w" onclick="addPhoto()">Enviar</button></div>
+  <div class="sheet" id="shC"><div class="grab"></div><h2>Tema do app</h2><div class="sws" id="sws"></div><h2 style="margin-top:16px">Dados da viagem</h2>
+    <label>Seu nome (aparece na saudação)</label><input id="cName" placeholder="Ex.: Renan">
+    <label>Destino</label><input id="cDest" placeholder="Ex.: Dublin, Irlanda">
+    <label>Data de início</label><input id="cDate" type="date">
+    <label>Custo total da viagem (€)</label><input id="cTotal" inputmode="decimal" placeholder="0,00">
+    <button class="w" onclick="saveCfg()">Salvar</button>
+    <div class="mut" style="margin-top:12px">Dica: use “Adicionar à tela inicial” no navegador para abrir como app.</div></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
